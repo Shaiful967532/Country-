@@ -5,9 +5,16 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
+const corsOptions = {
+  origin: 'https://country-iohi.onrender.com', // Allow requests from this specific origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+};
+
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
+
 
 // Example endpoint for fetching country data
 app.get('/api/countries', (req, res) => {
